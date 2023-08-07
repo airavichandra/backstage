@@ -54,7 +54,7 @@ export {
   RelatedEntitiesCard,
   CatalogSearchResultListItem,
 } from './plugin';
-
+export * from './hooks';
 export type { DependencyOfComponentsCardProps } from './components/DependencyOfComponentsCard';
 export type { DependsOnComponentsCardProps } from './components/DependsOnComponentsCard';
 export type { DependsOnResourcesCardProps } from './components/DependsOnResourcesCard';
