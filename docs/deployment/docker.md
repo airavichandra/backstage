@@ -37,7 +37,7 @@ The required steps in the host build are to install dependencies with
 `yarn install`, generate type definitions using `yarn tsc`, and build the backend
 package with `yarn build:backend`.
 
-In a CI workflow it might look something like this:
+In a CI workflow it might look something like this, from the root:
 
 ```bash
 yarn install --frozen-lockfile
@@ -47,22 +47,28 @@ yarn tsc
 
 # Build the backend, which bundles it all up into the packages/backend/dist folder.
 # The configuration files here should match the one you use inside the Dockerfile below.
-yarn build:backend --config app-config.yaml
+yarn build:backend --config ../../app-config.yaml
 ```
 
 Once the host build is complete, we are ready to build our image. The following
 `Dockerfile` is included when creating a new app with `@backstage/create-app`:
 
 ```Dockerfile
-FROM node:16-bullseye-slim
+FROM node:18-bookworm-slim
+
+# Install isolate-vm dependencies, these are needed by the @backstage/plugin-scaffolder-backend.
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+    --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    apt-get update && \
+    apt-get install -y --no-install-recommends python3 g++ build-essential && \
+    yarn config set python /usr/bin/python3
 
 # Install sqlite3 dependencies. You can skip this if you don't use sqlite3 in the image,
 # in which case you should also move better-sqlite3 to "devDependencies" in package.json.
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
     apt-get update && \
-    apt-get install -y --no-install-recommends libsqlite3-dev python3 build-essential && \
-    yarn config set python /usr/bin/python3
+    apt-get install -y --no-install-recommends libsqlite3-dev
 
 # From here on we use the least-privileged `node` user to run the backend.
 USER node
@@ -154,7 +160,7 @@ the repo root:
 
 ```Dockerfile
 # Stage 1 - Create yarn install skeleton layer
-FROM node:16-bullseye-slim AS packages
+FROM node:18-bookworm-slim AS packages
 
 WORKDIR /app
 COPY package.json yarn.lock ./
@@ -167,14 +173,21 @@ COPY plugins plugins
 RUN find packages \! -name "package.json" -mindepth 2 -maxdepth 2 -exec rm -rf {} \+
 
 # Stage 2 - Install dependencies and build packages
-FROM node:16-bullseye-slim AS build
+FROM node:18-bookworm-slim AS build
 
-# install sqlite3 dependencies
+# Install isolate-vm dependencies, these are needed by the @backstage/plugin-scaffolder-backend.
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
     apt-get update && \
-    apt-get install -y --no-install-recommends libsqlite3-dev python3 build-essential && \
+    apt-get install -y --no-install-recommends python3 g++ build-essential && \
     yarn config set python /usr/bin/python3
+
+# Install sqlite3 dependencies. You can skip this if you don't use sqlite3 in the image,
+# in which case you should also move better-sqlite3 to "devDependencies" in package.json.
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+    --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    apt-get update && \
+    apt-get install -y --no-install-recommends libsqlite3-dev
 
 USER node
 WORKDIR /app
@@ -198,15 +211,21 @@ RUN mkdir packages/backend/dist/skeleton packages/backend/dist/bundle \
     && tar xzf packages/backend/dist/bundle.tar.gz -C packages/backend/dist/bundle
 
 # Stage 3 - Build the actual backend image and install production dependencies
-FROM node:16-bullseye-slim
+FROM node:18-bookworm-slim
+
+# Install isolate-vm dependencies, these are needed by the @backstage/plugin-scaffolder-backend.
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+    --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    apt-get update && \
+    apt-get install -y --no-install-recommends python3 g++ build-essential && \
+    yarn config set python /usr/bin/python3
 
 # Install sqlite3 dependencies. You can skip this if you don't use sqlite3 in the image,
 # in which case you should also move better-sqlite3 to "devDependencies" in package.json.
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
     apt-get update && \
-    apt-get install -y --no-install-recommends libsqlite3-dev python3 build-essential && \
-    yarn config set python /usr/bin/python3
+    apt-get install -y --no-install-recommends libsqlite3-dev
 
 # From here on we use the least-privileged `node` user to run the backend.
 USER node

@@ -9,6 +9,7 @@
 import { AppConfig } from '@backstage/config';
 import { AwsCredentialsManager } from '@backstage/integration-aws-node';
 import { AwsS3Integration } from '@backstage/integration';
+import { AzureDevOpsCredentialsProvider } from '@backstage/integration';
 import { AzureIntegration } from '@backstage/integration';
 import { BackendFeature } from '@backstage/backend-plugin-api';
 import { BitbucketCloudIntegration } from '@backstage/integration';
@@ -18,7 +19,6 @@ import { CacheService as CacheClient } from '@backstage/backend-plugin-api';
 import { CacheServiceOptions as CacheClientOptions } from '@backstage/backend-plugin-api';
 import { CacheServiceSetOptions as CacheClientSetOptions } from '@backstage/backend-plugin-api';
 import { Config } from '@backstage/config';
-import { ConfigService } from '@backstage/backend-plugin-api';
 import cors from 'cors';
 import Docker from 'dockerode';
 import { ErrorRequestHandler } from 'express';
@@ -28,6 +28,7 @@ import { GiteaIntegration } from '@backstage/integration';
 import { GithubCredentialsProvider } from '@backstage/integration';
 import { GithubIntegration } from '@backstage/integration';
 import { GitLabIntegration } from '@backstage/integration';
+import { HostDiscovery as HostDiscovery_2 } from '@backstage/backend-app-api';
 import { IdentityService } from '@backstage/backend-plugin-api';
 import { isChildPath } from '@backstage/cli-common';
 import { Knex } from 'knex';
@@ -51,6 +52,7 @@ import { ReadTreeResponseFile } from '@backstage/backend-plugin-api';
 import { ReadUrlOptions } from '@backstage/backend-plugin-api';
 import { ReadUrlResponse } from '@backstage/backend-plugin-api';
 import { RequestHandler } from 'express';
+import { RootConfigService } from '@backstage/backend-plugin-api';
 import { Router } from 'express';
 import { SchedulerService } from '@backstage/backend-plugin-api';
 import { SearchOptions } from '@backstage/backend-plugin-api';
@@ -94,6 +96,7 @@ export class AzureUrlReader implements UrlReader {
     integration: AzureIntegration,
     deps: {
       treeResponseFactory: ReadTreeResponseFactory;
+      credentialsProvider: AzureDevOpsCredentialsProvider;
     },
   );
   // (undocumented)
@@ -375,7 +378,11 @@ export class Git {
   }): Promise<string | undefined>;
   // (undocumented)
   deleteRemote(options: { dir: string; remote: string }): Promise<void>;
-  fetch(options: { dir: string; remote?: string }): Promise<void>;
+  fetch(options: {
+    dir: string;
+    remote?: string;
+    tags?: boolean;
+  }): Promise<void>;
   // (undocumented)
   static fromAuth: (options: {
     username?: string;
@@ -473,18 +480,7 @@ export class GitlabUrlReader implements UrlReader {
 }
 
 // @public
-export class HostDiscovery implements PluginEndpointDiscovery {
-  static fromConfig(
-    config: Config,
-    options?: {
-      basePath?: string;
-    },
-  ): HostDiscovery;
-  // (undocumented)
-  getBaseUrl(pluginId: string): Promise<string>;
-  // (undocumented)
-  getExternalBaseUrl(pluginId: string): Promise<string>;
-}
+export const HostDiscovery: typeof HostDiscovery_2;
 
 export { isChildPath };
 
@@ -525,7 +521,7 @@ export const legacyPlugin: (
       TransformedEnv<
         {
           cache: CacheClient;
-          config: ConfigService;
+          config: RootConfigService;
           database: PluginDatabaseManager;
           discovery: PluginEndpointDiscovery;
           logger: LoggerService;
@@ -550,6 +546,7 @@ export function loadBackendConfig(options: {
   remote?: LoadConfigOptionsRemote;
   additionalConfigs?: AppConfig[];
   argv: string[];
+  watch?: boolean;
 }): Promise<Config>;
 
 // @public (undocumented)
@@ -610,7 +607,9 @@ export interface ReadTreeResponseFactory {
   ): Promise<ReadTreeResponse>;
   // (undocumented)
   fromTarArchive(
-    options: ReadTreeResponseFactoryOptions,
+    options: ReadTreeResponseFactoryOptions & {
+      stripFirstDirectory?: boolean;
+    },
   ): Promise<ReadTreeResponse>;
   // (undocumented)
   fromZipArchive(
@@ -743,7 +742,7 @@ export type ServiceBuilder = {
 export function setRootLogger(newLogger: winston.Logger): void;
 
 // @public @deprecated
-export const SingleHostDiscovery: typeof HostDiscovery;
+export const SingleHostDiscovery: typeof HostDiscovery_2;
 
 // @public
 export type StatusCheck = () => Promise<any>;
@@ -781,12 +780,12 @@ export type UrlReadersOptions = {
   factories?: ReaderFactory[];
 };
 
-// @public
+// @public @deprecated
 export function useHotCleanup(
   _module: NodeModule,
   cancelEffect: () => void,
 ): void;
 
-// @public
+// @public @deprecated
 export function useHotMemoize<T>(_module: NodeModule, valueFactory: () => T): T;
 ```

@@ -6,20 +6,20 @@
 /// <reference types="react" />
 
 import { BackstagePlugin } from '@backstage/core-plugin-api';
+import { JSX as JSX_2 } from 'react';
 import { RouteRef } from '@backstage/core-plugin-api';
 
 // @public (undocumented)
 export const EntityValidationPage: (props: {
   defaultYaml?: string | undefined;
   defaultLocation?: string | undefined;
-}) => JSX.Element;
+}) => JSX_2.Element;
 
 // @public (undocumented)
 export const entityValidationPlugin: BackstagePlugin<
   {
     root: RouteRef<undefined>;
   },
-  {},
   {}
 >;
 

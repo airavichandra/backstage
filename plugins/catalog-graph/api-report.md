@@ -10,8 +10,11 @@ import { CompoundEntityRef } from '@backstage/catalog-model';
 import { DependencyGraphTypes } from '@backstage/core-components';
 import { ExternalRouteRef } from '@backstage/core-plugin-api';
 import { InfoCardVariants } from '@backstage/core-components';
+import { JsonObject } from '@backstage/types';
+import { JSX as JSX_2 } from 'react';
 import { MouseEvent as MouseEvent_2 } from 'react';
 import { MouseEventHandler } from 'react';
+import { default as React_2 } from 'react';
 import { RouteRef } from '@backstage/core-plugin-api';
 
 // @public
@@ -34,7 +37,7 @@ export const CatalogGraphPage: (
         }
       | undefined;
   } & Partial<EntityRelationsGraphProps>,
-) => JSX.Element;
+) => JSX_2.Element;
 
 // @public
 export const catalogGraphPlugin: BackstagePlugin<
@@ -50,8 +53,7 @@ export const catalogGraphPlugin: BackstagePlugin<
       },
       true
     >;
-  },
-  {}
+  }
 >;
 
 // @public
@@ -72,7 +74,7 @@ export const EntityCatalogGraphCard: (
     height?: number | undefined;
     title?: string | undefined;
   },
-) => JSX.Element;
+) => JSX_2.Element;
 
 // @public
 export type EntityEdge = DependencyGraphTypes.DependencyEdge<EntityEdgeData>;
@@ -92,6 +94,7 @@ export type EntityNodeData = {
   kind?: string;
   title?: string;
   namespace: string;
+  spec?: JsonObject;
   focused?: boolean;
   color?: 'primary' | 'secondary' | 'default';
   onClick?: MouseEventHandler<unknown>;
@@ -100,7 +103,7 @@ export type EntityNodeData = {
 // @public
 export const EntityRelationsGraph: (
   props: EntityRelationsGraphProps,
-) => JSX.Element;
+) => React_2.JSX.Element;
 
 // @public (undocumented)
 export type EntityRelationsGraphProps = {

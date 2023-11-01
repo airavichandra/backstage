@@ -29,7 +29,7 @@ import {
   createTheme as createV5Theme,
 } from '@mui/material/styles';
 import { createBaseThemeOptions } from '../base/createBaseThemeOptions';
-import { PageTheme } from '../base/types';
+import { BackstageTypography, PageTheme } from '../base/types';
 import { defaultComponentThemes } from '../v5';
 import { transformV5ComponentThemesToV4 } from './overrides';
 import { SupportedThemes, SupportedVersions, UnifiedTheme } from './types';
@@ -64,6 +64,7 @@ export interface UnifiedThemeOptions {
   fontFamily?: string;
   htmlFontSize?: number;
   components?: ThemeOptionsV5['components'];
+  typography?: BackstageTypography;
 }
 
 /**
@@ -82,8 +83,8 @@ export function createUnifiedTheme(options: UnifiedThemeOptions): UnifiedTheme {
 }
 
 /**
- * Creates a new {@link UnifiedTheme} using MUI v4 theme options.
- * Note that this uses `adaptV4Theme` from MUI v5, which is deprecated.
+ * Creates a new {@link UnifiedTheme} using Material UI v4 theme options.
+ * Note that this uses `adaptV4Theme` from Material UI v5, which is deprecated.
  *
  * @public
  */

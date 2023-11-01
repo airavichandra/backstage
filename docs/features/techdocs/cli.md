@@ -95,6 +95,7 @@ Options:
   --preview-app-bundle-path <PATH_TO_BUNDLE>  Preview documentation using a web app other than the included one.
   --preview-app-port <PORT>                   Port where the preview will be served.
                                               Can only be used with "--preview-app-bundle-path". (default: "3000")
+  -c, --mkdocs-config-file-name <FILENAME>    Yaml file to use as config by mkdocs.
   -v --verbose                                Enable verbose output. (default: false)
   -h, --help                                  display help for command
 ```
@@ -141,6 +142,7 @@ Options:
                                   if not found.
   --etag <ETAG>                   A unique identifier for the prepared tree e.g. commit SHA. If provided it will be stored
                                   in techdocs_metadata.json.
+  --defaultPlugin <PLUGIN_NAME>   Plugins which should be added automatically to the mkdocs.yaml file. (default: [])
   --omitTechdocsCoreMkdocsPlugin  An option to disable automatic addition of techdocs-core plugin to the mkdocs.yaml files.
                                   Defaults to false, which means that the techdocs-core plugin is always added to the mkdocs file.
   --legacyCopyReadmeMdToIndexMd   Attempt to ensure an index.md exists falling back to using <docs-dir>/README.md or README.md

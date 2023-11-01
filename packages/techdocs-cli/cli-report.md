@@ -37,6 +37,7 @@ Options:
   -v --verbose
   --omitTechdocsCoreMkdocsPlugin
   --legacyCopyReadmeMdToIndexMd
+  --defaultPlugin [defaultPlugins...]
   -h, --help
 ```
 
@@ -105,6 +106,7 @@ Options:
   -v --verbose
   --preview-app-bundle-path <PATH_TO_BUNDLE>
   --preview-app-port <PORT>
+  -c, --mkdocs-config-file-name <FILENAME>
   -h, --help
 ```
 

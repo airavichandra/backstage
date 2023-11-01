@@ -19,15 +19,11 @@ import {
   CatalogApi,
   catalogApiRef,
   EntityProvider,
+  entityRouteRef,
   StarredEntitiesApi,
   starredEntitiesApiRef,
 } from '@backstage/plugin-catalog-react';
-import {
-  renderInTestApp,
-  renderWithEffects,
-  TestApiProvider,
-  wrapInTestApp,
-} from '@backstage/test-utils';
+import { renderInTestApp, TestApiProvider } from '@backstage/test-utils';
 import React from 'react';
 import { MembersListCard } from './MembersListCard';
 import {
@@ -116,46 +112,50 @@ describe('MemberTab Test', () => {
   };
 
   it('Display Profile Card', async () => {
-    const rendered = await renderWithEffects(
-      wrapInTestApp(
-        <TestApiProvider apis={[[catalogApiRef, catalogApi]]}>
-          <EntityProvider entity={groupEntity}>
-            <MembersListCard />
-          </EntityProvider>
-          ,
-        </TestApiProvider>,
-      ),
+    await renderInTestApp(
+      <TestApiProvider apis={[[catalogApiRef, catalogApi]]}>
+        <EntityProvider entity={groupEntity}>
+          <MembersListCard />
+        </EntityProvider>
+        ,
+      </TestApiProvider>,
+      {
+        mountedRoutes: {
+          '/catalog/:namespace/:kind/:name': entityRouteRef,
+        },
+      },
     );
 
-    expect(rendered.getByAltText('Tara MacGovern')).toHaveAttribute(
+    expect(screen.getByAltText('Tara MacGovern')).toHaveAttribute(
       'src',
       'https://example.com/staff/tara.jpeg',
     );
-    expect(
-      rendered.getByText('tara-macgovern@example.com'),
-    ).toBeInTheDocument();
-    expect(rendered.getByText('Tara MacGovern').closest('a')).toHaveAttribute(
+    expect(screen.getByText('tara-macgovern@example.com')).toBeInTheDocument();
+    expect(screen.getByText('Tara MacGovern').closest('a')).toHaveAttribute(
       'href',
       '/catalog/foo-bar/user/tara.macgovern',
     );
 
-    expect(rendered.getByText('Super Awesome Developer')).toBeInTheDocument();
+    expect(screen.getByText('Super Awesome Developer')).toBeInTheDocument();
 
-    expect(rendered.getByText('Members (1)')).toBeInTheDocument();
+    expect(screen.getByText('Members (1)')).toBeInTheDocument();
   });
 
   it('Can render different member display title', async () => {
-    const rendered = await renderWithEffects(
-      wrapInTestApp(
-        <TestApiProvider apis={[[catalogApiRef, catalogApi]]}>
-          <EntityProvider entity={groupEntity}>
-            <MembersListCard memberDisplayTitle="Testers" />
-          </EntityProvider>
-        </TestApiProvider>,
-      ),
+    await renderInTestApp(
+      <TestApiProvider apis={[[catalogApiRef, catalogApi]]}>
+        <EntityProvider entity={groupEntity}>
+          <MembersListCard memberDisplayTitle="Testers" />
+        </EntityProvider>
+      </TestApiProvider>,
+      {
+        mountedRoutes: {
+          '/catalog/:namespace/:kind/:name': entityRouteRef,
+        },
+      },
     );
 
-    expect(rendered.getByText('Testers (1)')).toBeInTheDocument();
+    expect(screen.getByText('Testers (1)')).toBeInTheDocument();
   });
 
   describe('Aggregate members toggle', () => {
@@ -176,8 +176,12 @@ describe('MemberTab Test', () => {
             </EntityLayout>
           </EntityProvider>
         </TestApiProvider>,
+        {
+          mountedRoutes: {
+            '/catalog/:namespace/:kind/:name': entityRouteRef,
+          },
+        },
       );
-
       const toggleSwitch = screen.queryByRole('checkbox');
       expect(toggleSwitch).toBeNull();
     });
@@ -199,11 +203,14 @@ describe('MemberTab Test', () => {
             </EntityLayout>
           </EntityProvider>
         </TestApiProvider>,
+        {
+          mountedRoutes: {
+            '/catalog/:namespace/:kind/:name': entityRouteRef,
+          },
+        },
       );
-
       expect(screen.queryByRole('checkbox')).toBeInTheDocument();
     });
-
     it('Shows only direct members if the showAggregateMembersToggle prop is undefined', async () => {
       await renderInTestApp(
         <TestApiProvider
@@ -221,12 +228,15 @@ describe('MemberTab Test', () => {
             </EntityLayout>
           </EntityProvider>
         </TestApiProvider>,
+        {
+          mountedRoutes: {
+            '/catalog/:namespace/:kind/:name': entityRouteRef,
+          },
+        },
       );
-
       const displayedMemberNames = screen.queryAllByTestId('user-link');
       const duplicatedUserText = screen.getByText('Duplicated User');
       const groupAUserOneText = screen.getByText('Group A User One');
-
       expect(displayedMemberNames).toHaveLength(2);
       expect(duplicatedUserText).toBeInTheDocument();
       expect(groupAUserOneText).toBeInTheDocument();
@@ -252,12 +262,15 @@ describe('MemberTab Test', () => {
             </EntityLayout>
           </EntityProvider>
         </TestApiProvider>,
+        {
+          mountedRoutes: {
+            '/catalog/:namespace/:kind/:name': entityRouteRef,
+          },
+        },
       );
-
       const displayedMemberNames = screen.queryAllByTestId('user-link');
       const duplicatedUserText = screen.getByText('Duplicated User');
       const groupAUserOneText = screen.getByText('Group A User One');
-
       expect(displayedMemberNames).toHaveLength(2);
       expect(duplicatedUserText).toBeInTheDocument();
       expect(groupAUserOneText).toBeInTheDocument();
@@ -283,26 +296,26 @@ describe('MemberTab Test', () => {
             </EntityLayout>
           </EntityProvider>
         </TestApiProvider>,
+        {
+          mountedRoutes: {
+            '/catalog/:namespace/:kind/:name': entityRouteRef,
+          },
+        },
       );
-
       // Click the toggle switch
       await userEvent.click(screen.getByRole('checkbox'));
-
       const displayedMemberNames = screen.queryAllByTestId('user-link');
       const duplicatedUserText = screen.getByText('Duplicated User');
       const groupAUserOneText = screen.getByText('Group A User One');
       const groupBUserOneText = screen.getByText('Group B User One');
       const groupDUserOneText = screen.getByText('Group D User One');
       const groupEUserOneText = screen.getByText('Group E User One');
-
       expect(displayedMemberNames).toHaveLength(5);
-
       expect(duplicatedUserText).toBeInTheDocument();
       expect(groupAUserOneText).toBeInTheDocument();
       expect(groupBUserOneText).toBeInTheDocument();
       expect(groupDUserOneText).toBeInTheDocument();
       expect(groupEUserOneText).toBeInTheDocument();
-
       expect(
         duplicatedUserText.compareDocumentPosition(groupAUserOneText),
       ).toBe(Node.DOCUMENT_POSITION_FOLLOWING);

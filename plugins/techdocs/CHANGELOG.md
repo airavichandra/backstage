@@ -1,5 +1,342 @@
 # @backstage/plugin-techdocs
 
+## 1.8.1-next.1
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/integration@1.7.2-next.0
+  - @backstage/frontend-plugin-api@0.3.0-next.1
+  - @backstage/plugin-catalog-react@1.9.0-next.1
+  - @backstage/plugin-search-react@1.7.2-next.1
+  - @backstage/integration-react@1.1.21-next.1
+  - @backstage/core-components@0.13.8-next.1
+  - @backstage/catalog-model@1.4.3
+  - @backstage/config@1.1.1
+  - @backstage/core-plugin-api@1.8.0-next.0
+  - @backstage/errors@1.2.3
+  - @backstage/theme@0.4.4-next.0
+  - @backstage/plugin-search-common@1.2.7
+  - @backstage/plugin-techdocs-react@1.1.13-next.1
+
+## 1.8.1-next.0
+
+### Patch Changes
+
+- 4728b3960d: Fixed navigation bug that caused users to not be scrolled to the top of a new page. Fixed navigation bug where using backwards and forwards browser navigation did not scroll users to the correct place on the TechDoc page.
+- a3add7a682: Export alpha routes and nav item extension, only available for applications that uses the new Frontend system.
+- 71c97e7d73: The `spec.lifecycle' field in entities will now always be rendered as a string.
+- 68fc9dc60e: Updated alpha exports according to routing changes in `@backstage/frontend-plugin-api`.
+- 6c2b872153: Add official support for React 18.
+- 0bf6ebda88: Added entity page content for the new plugin exported via `/alpha`.
+- 67cc85bb14: Switched the conditional `react-dom/client` import to use `import(...)` rather than `require(...)`.
+- 38cda52746: Added support for React 18. The new `createRoot` API from `react-dom/client` will now be used if present.
+- Updated dependencies
+  - @backstage/core-components@0.13.7-next.0
+  - @backstage/frontend-plugin-api@0.3.0-next.0
+  - @backstage/plugin-catalog-react@1.9.0-next.0
+  - @backstage/integration-react@1.1.21-next.0
+  - @backstage/core-plugin-api@1.8.0-next.0
+  - @backstage/plugin-techdocs-react@1.1.13-next.0
+  - @backstage/plugin-search-react@1.7.2-next.0
+  - @backstage/theme@0.4.4-next.0
+  - @backstage/integration@1.7.1
+  - @backstage/catalog-model@1.4.3
+  - @backstage/config@1.1.1
+  - @backstage/errors@1.2.3
+  - @backstage/plugin-search-common@1.2.7
+
+## 1.8.0
+
+### Minor Changes
+
+- 27740caa2d: Added experimental support for declarative integration via the `/alpha` subpath.
+
+### Patch Changes
+
+- 4918f65ab2: Create an experimental `TechDocsSearchResultItemExtension` for declarative integration with Backstage; it can be accessed via the `/alpha` import.
+- 3605370af6: Improved `DocsTable` to display pagination controls dynamically, appearing only when needed.
+- 0296f272b4: The `spec.lifecycle' field in entities will now always be rendered as a string.
+- 9a1fce352e: Updated dependency `@testing-library/jest-dom` to `^6.0.0`.
+- f95af4e540: Updated dependency `@testing-library/dom` to `^9.0.0`.
+- 9468a67b92: Added support for React 18. The new `createRoot` API from `react-dom/client` will now be used if present.
+- df449a7a31: Add kind column by default to TechDocsTable
+- Updated dependencies
+  - @backstage/integration@1.7.1
+  - @backstage/plugin-catalog-react@1.8.5
+  - @backstage/frontend-plugin-api@0.2.0
+  - @backstage/core-plugin-api@1.7.0
+  - @backstage/core-components@0.13.6
+  - @backstage/integration-react@1.1.20
+  - @backstage/catalog-model@1.4.3
+  - @backstage/errors@1.2.3
+  - @backstage/plugin-search-react@1.7.1
+  - @backstage/plugin-techdocs-react@1.1.12
+  - @backstage/theme@0.4.3
+  - @backstage/config@1.1.1
+  - @backstage/plugin-search-common@1.2.7
+
+## 1.7.1-next.2
+
+### Patch Changes
+
+- 3605370af6: Improved `DocsTable` to display pagination controls dynamically, appearing only when needed.
+- Updated dependencies
+  - @backstage/frontend-plugin-api@0.2.0-next.2
+  - @backstage/integration-react@1.1.20-next.2
+  - @backstage/core-components@0.13.6-next.2
+  - @backstage/core-plugin-api@1.7.0-next.1
+  - @backstage/catalog-model@1.4.3-next.0
+  - @backstage/plugin-catalog-react@1.8.5-next.2
+  - @backstage/integration@1.7.1-next.1
+  - @backstage/errors@1.2.3-next.0
+  - @backstage/plugin-search-react@1.7.1-next.2
+  - @backstage/theme@0.4.3-next.0
+  - @backstage/config@1.1.1-next.0
+  - @backstage/plugin-search-common@1.2.7-next.0
+  - @backstage/plugin-techdocs-react@1.1.12-next.2
+
+## 1.7.1-next.1
+
+### Patch Changes
+
+- 4918f65ab2: Create an experimental `TechDocsSearchResultItemExtension` for declarative integration with Backstage; it can be accessed via the `/alpha` import.
+- df449a7a31: Add kind column by default to TechDocsTable
+- Updated dependencies
+  - @backstage/frontend-plugin-api@0.1.1-next.1
+  - @backstage/core-components@0.13.6-next.1
+  - @backstage/plugin-search-react@1.7.1-next.1
+  - @backstage/integration-react@1.1.20-next.1
+  - @backstage/plugin-catalog-react@1.8.5-next.1
+  - @backstage/plugin-techdocs-react@1.1.12-next.1
+  - @backstage/core-plugin-api@1.7.0-next.0
+  - @backstage/config@1.1.0
+  - @backstage/catalog-model@1.4.2
+  - @backstage/errors@1.2.2
+  - @backstage/integration@1.7.1-next.0
+  - @backstage/theme@0.4.2
+  - @backstage/plugin-search-common@1.2.6
+
+## 1.7.1-next.0
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/integration@1.7.1-next.0
+  - @backstage/plugin-catalog-react@1.8.5-next.0
+  - @backstage/core-plugin-api@1.7.0-next.0
+  - @backstage/core-components@0.13.6-next.0
+  - @backstage/integration-react@1.1.20-next.0
+  - @backstage/config@1.1.0
+  - @backstage/plugin-search-react@1.7.1-next.0
+  - @backstage/plugin-techdocs-react@1.1.12-next.0
+  - @backstage/catalog-model@1.4.2
+  - @backstage/errors@1.2.2
+  - @backstage/theme@0.4.2
+  - @backstage/plugin-search-common@1.2.6
+
+## 1.7.0
+
+### Minor Changes
+
+- e44f45ac4515: This change allows a new annotation of `backstage.io/techdocs-entity` this ref allows you to reference another entity for its TechDocs. This allows you have a single TechDoc for all items in a system, for example you might have a frontend and a backend in the same repo. This would allow you to have TechDocs build under a `System` entity while referencing the system e.g.: `backstage.io/techdocs-entity: system:default/example` that will show the systems docs in both the TechDocs button and the TechDocs tab without needing to do duplicate builds and filling the TechDocs page with garbage.
+
+### Patch Changes
+
+- 88c9525a36f3: Fixed bug in styles that caused next and previous links in footer to overlap page content.
+- 406b786a2a2c: Mark package as being free of side effects, allowing more optimized Webpack builds.
+- 8cec7664e146: Removed `@types/node` dependency
+- Updated dependencies
+  - @backstage/integration-react@1.1.19
+  - @backstage/plugin-catalog-react@1.8.4
+  - @backstage/core-components@0.13.5
+  - @backstage/config@1.1.0
+  - @backstage/catalog-model@1.4.2
+  - @backstage/core-plugin-api@1.6.0
+  - @backstage/errors@1.2.2
+  - @backstage/integration@1.7.0
+  - @backstage/plugin-search-common@1.2.6
+  - @backstage/plugin-search-react@1.7.0
+  - @backstage/plugin-techdocs-react@1.1.10
+  - @backstage/theme@0.4.2
+
+## 1.7.0-next.3
+
+### Patch Changes
+
+- 406b786a2a2c: Mark package as being free of side effects, allowing more optimized Webpack builds.
+- Updated dependencies
+  - @backstage/catalog-model@1.4.2-next.2
+  - @backstage/config@1.1.0-next.2
+  - @backstage/core-components@0.13.5-next.3
+  - @backstage/core-plugin-api@1.6.0-next.3
+  - @backstage/errors@1.2.2-next.0
+  - @backstage/integration@1.7.0-next.3
+  - @backstage/integration-react@1.1.19-next.3
+  - @backstage/plugin-catalog-react@1.8.4-next.3
+  - @backstage/plugin-search-common@1.2.6-next.2
+  - @backstage/plugin-search-react@1.7.0-next.3
+  - @backstage/plugin-techdocs-react@1.1.10-next.3
+  - @backstage/theme@0.4.2-next.0
+
+## 1.7.0-next.2
+
+### Minor Changes
+
+- e44f45ac4515: This change allows a new annotation of `backstage.io/techdocs-entity` this ref allows you to reference another entity for its TechDocs. This allows you have a single TechDoc for all items in a system, for example you might have a frontend and a backend in the same repo. This would allow you to have TechDocs build under a `System` entity while referencing the system e.g.: `backstage.io/techdocs-entity: system:default/example` that will show the systems docs in both the TechDocs button and the TechDocs tab without needing to do duplicate builds and filling the TechDocs page with garbage.
+
+### Patch Changes
+
+- 8cec7664e146: Removed `@types/node` dependency
+- Updated dependencies
+  - @backstage/integration-react@1.1.19-next.2
+  - @backstage/core-components@0.13.5-next.2
+  - @backstage/core-plugin-api@1.6.0-next.2
+  - @backstage/config@1.1.0-next.1
+  - @backstage/plugin-catalog-react@1.8.4-next.2
+  - @backstage/plugin-search-react@1.7.0-next.2
+  - @backstage/plugin-techdocs-react@1.1.10-next.2
+  - @backstage/integration@1.7.0-next.2
+  - @backstage/catalog-model@1.4.2-next.1
+  - @backstage/errors@1.2.1
+  - @backstage/theme@0.4.1
+  - @backstage/plugin-search-common@1.2.6-next.1
+
+## 1.6.9-next.1
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/plugin-catalog-react@1.8.4-next.1
+  - @backstage/core-components@0.13.5-next.1
+  - @backstage/config@1.1.0-next.0
+  - @backstage/integration@1.7.0-next.1
+  - @backstage/plugin-search-react@1.7.0-next.1
+  - @backstage/integration-react@1.1.19-next.1
+  - @backstage/plugin-techdocs-react@1.1.10-next.1
+  - @backstage/catalog-model@1.4.2-next.0
+  - @backstage/core-plugin-api@1.6.0-next.1
+  - @backstage/errors@1.2.1
+  - @backstage/theme@0.4.1
+  - @backstage/plugin-search-common@1.2.6-next.0
+
+## 1.6.8-next.0
+
+### Patch Changes
+
+- 88c9525a36f3: Fixed bug in styles that caused next and previous links in footer to overlap page content.
+- Updated dependencies
+  - @backstage/integration-react@1.1.18-next.0
+  - @backstage/integration@1.7.0-next.0
+  - @backstage/core-plugin-api@1.6.0-next.0
+  - @backstage/core-components@0.13.5-next.0
+  - @backstage/catalog-model@1.4.1
+  - @backstage/config@1.0.8
+  - @backstage/errors@1.2.1
+  - @backstage/theme@0.4.1
+  - @backstage/plugin-catalog-react@1.8.3-next.0
+  - @backstage/plugin-search-common@1.2.5
+  - @backstage/plugin-search-react@1.6.5-next.0
+  - @backstage/plugin-techdocs-react@1.1.10-next.0
+
+## 1.6.6
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/integration-react@1.1.16
+  - @backstage/integration@1.6.0
+  - @backstage/core-components@0.13.4
+  - @backstage/plugin-catalog-react@1.8.1
+  - @backstage/core-plugin-api@1.5.3
+  - @backstage/plugin-search-react@1.6.4
+  - @backstage/catalog-model@1.4.1
+  - @backstage/config@1.0.8
+  - @backstage/errors@1.2.1
+  - @backstage/theme@0.4.1
+  - @backstage/plugin-search-common@1.2.5
+  - @backstage/plugin-techdocs-react@1.1.9
+
+## 1.6.6-next.2
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/plugin-catalog-react@1.8.1-next.1
+  - @backstage/integration-react@1.1.16-next.1
+
+## 1.6.6-next.1
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/integration-react@1.1.16-next.1
+  - @backstage/integration@1.5.1
+  - @backstage/catalog-model@1.4.1
+  - @backstage/config@1.0.8
+  - @backstage/core-components@0.13.4-next.0
+  - @backstage/core-plugin-api@1.5.3
+  - @backstage/errors@1.2.1
+  - @backstage/theme@0.4.1
+  - @backstage/plugin-catalog-react@1.8.1-next.0
+  - @backstage/plugin-search-common@1.2.5
+  - @backstage/plugin-search-react@1.6.4-next.0
+  - @backstage/plugin-techdocs-react@1.1.9-next.0
+
+## 1.6.6-next.0
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/core-components@0.13.4-next.0
+  - @backstage/core-plugin-api@1.5.3
+  - @backstage/plugin-catalog-react@1.8.1-next.0
+  - @backstage/plugin-search-react@1.6.4-next.0
+  - @backstage/catalog-model@1.4.1
+  - @backstage/config@1.0.8
+  - @backstage/errors@1.2.1
+  - @backstage/integration@1.5.1
+  - @backstage/integration-react@1.1.16-next.0
+  - @backstage/theme@0.4.1
+  - @backstage/plugin-search-common@1.2.5
+  - @backstage/plugin-techdocs-react@1.1.9-next.0
+
+## 1.6.5
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/theme@0.4.1
+  - @backstage/errors@1.2.1
+  - @backstage/plugin-catalog-react@1.8.0
+  - @backstage/core-components@0.13.3
+  - @backstage/core-plugin-api@1.5.3
+  - @backstage/catalog-model@1.4.1
+  - @backstage/config@1.0.8
+  - @backstage/integration@1.5.1
+  - @backstage/integration-react@1.1.15
+  - @backstage/plugin-search-common@1.2.5
+  - @backstage/plugin-search-react@1.6.3
+  - @backstage/plugin-techdocs-react@1.1.8
+
+## 1.6.5-next.2
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/plugin-catalog-react@1.8.0-next.2
+  - @backstage/theme@0.4.1-next.1
+  - @backstage/core-plugin-api@1.5.3-next.1
+  - @backstage/core-components@0.13.3-next.2
+  - @backstage/catalog-model@1.4.1-next.0
+  - @backstage/config@1.0.8
+  - @backstage/errors@1.2.1-next.0
+  - @backstage/integration@1.5.1-next.0
+  - @backstage/integration-react@1.1.15-next.2
+  - @backstage/plugin-search-common@1.2.5-next.0
+  - @backstage/plugin-search-react@1.6.3-next.2
+  - @backstage/plugin-techdocs-react@1.1.8-next.2
+
 ## 1.6.5-next.1
 
 ### Patch Changes
@@ -601,7 +938,7 @@
 - d3fea4ae0a: Internal fixes to avoid implicit usage of globals
 - 2e701b3796: Internal refactor to use `react-router-dom` rather than `react-router`.
 - a19cffbeed: Update search links to only have header as linkable text
-- 5d3058355d: Add `react/forbid-elements` linter rule for button, suggest MUI `Button`
+- 5d3058355d: Add `react/forbid-elements` linter rule for button, suggest Material UI `Button`
 - 3280711113: Updated dependency `msw` to `^0.49.0`.
 - 786f1b1419: Support older versions of react-router
 - Updated dependencies

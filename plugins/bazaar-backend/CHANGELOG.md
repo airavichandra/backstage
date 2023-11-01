@@ -1,5 +1,222 @@
 # @backstage/plugin-bazaar-backend
 
+## 0.3.5-next.1
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/backend-common@0.19.9-next.1
+  - @backstage/plugin-auth-node@0.4.1-next.1
+  - @backstage/backend-plugin-api@0.6.7-next.1
+  - @backstage/config@1.1.1
+  - @backstage/errors@1.2.3
+
+## 0.3.5-next.0
+
+### Patch Changes
+
+- 8613ba3928: Switched to using `"exports"` field for `/alpha` subpath export.
+- Updated dependencies
+  - @backstage/backend-common@0.19.9-next.0
+  - @backstage/backend-plugin-api@0.6.7-next.0
+  - @backstage/config@1.1.1
+  - @backstage/errors@1.2.3
+  - @backstage/plugin-auth-node@0.4.1-next.0
+
+## 0.3.3
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/backend-common@0.19.8
+  - @backstage/plugin-auth-node@0.4.0
+  - @backstage/errors@1.2.3
+  - @backstage/backend-plugin-api@0.6.6
+  - @backstage/config@1.1.1
+
+## 0.3.3-next.2
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/backend-common@0.19.8-next.2
+  - @backstage/plugin-auth-node@0.4.0-next.2
+  - @backstage/errors@1.2.3-next.0
+  - @backstage/backend-plugin-api@0.6.6-next.2
+  - @backstage/config@1.1.1-next.0
+
+## 0.3.2-next.1
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/backend-common@0.19.7-next.1
+  - @backstage/backend-plugin-api@0.6.5-next.1
+  - @backstage/plugin-auth-node@0.3.2-next.1
+  - @backstage/config@1.1.0
+  - @backstage/errors@1.2.2
+
+## 0.3.2-next.0
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/plugin-auth-node@0.3.2-next.0
+  - @backstage/backend-common@0.19.7-next.0
+  - @backstage/config@1.1.0
+  - @backstage/backend-plugin-api@0.6.5-next.0
+  - @backstage/errors@1.2.2
+
+## 0.3.0
+
+### Minor Changes
+
+- 71114ac50e02: **BREAKING**: The export for the new backend system has been moved to be the `default` export.
+
+  For example, if you are currently importing the plugin using the following pattern:
+
+  ```ts
+  import { examplePlugin } from '@backstage/plugin-example-backend';
+
+  backend.add(examplePlugin);
+  ```
+
+  It should be migrated to this:
+
+  ```ts
+  backend.add(import('@backstage/plugin-example-backend'));
+  ```
+
+### Patch Changes
+
+- cfc3ca6ce060: Changes needed to support MySQL
+- Updated dependencies
+  - @backstage/backend-common@0.19.5
+  - @backstage/plugin-auth-node@0.3.0
+  - @backstage/config@1.1.0
+  - @backstage/errors@1.2.2
+  - @backstage/backend-plugin-api@0.6.3
+
+## 0.3.0-next.3
+
+### Minor Changes
+
+- 71114ac50e02: **BREAKING**: The export for the new backend system has been moved to be the `default` export.
+
+  For example, if you are currently importing the plugin using the following pattern:
+
+  ```ts
+  import { examplePlugin } from '@backstage/plugin-example-backend';
+
+  backend.add(examplePlugin);
+  ```
+
+  It should be migrated to this:
+
+  ```ts
+  backend.add(import('@backstage/plugin-example-backend'));
+  ```
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/config@1.1.0-next.2
+  - @backstage/errors@1.2.2-next.0
+  - @backstage/backend-plugin-api@0.6.3-next.3
+  - @backstage/backend-common@0.19.5-next.3
+  - @backstage/plugin-auth-node@0.3.0-next.3
+
+## 0.2.14-next.2
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/config@1.1.0-next.1
+  - @backstage/backend-common@0.19.5-next.2
+  - @backstage/plugin-auth-node@0.3.0-next.2
+  - @backstage/backend-plugin-api@0.6.3-next.2
+  - @backstage/errors@1.2.1
+
+## 0.2.14-next.1
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/config@1.1.0-next.0
+  - @backstage/backend-common@0.19.5-next.1
+  - @backstage/backend-plugin-api@0.6.3-next.1
+  - @backstage/plugin-auth-node@0.3.0-next.1
+  - @backstage/errors@1.2.1
+
+## 0.2.13-next.0
+
+### Patch Changes
+
+- cfc3ca6ce060: Changes needed to support MySQL
+- Updated dependencies
+  - @backstage/plugin-auth-node@0.3.0-next.0
+  - @backstage/backend-common@0.19.4-next.0
+  - @backstage/backend-plugin-api@0.6.2-next.0
+  - @backstage/config@1.0.8
+  - @backstage/errors@1.2.1
+
+## 0.2.11
+
+### Patch Changes
+
+- 629cbd194a87: Use `coreServices.rootConfig` instead of `coreService.config`
+- 12a8c94eda8d: Add package repository and homepage metadata
+- Updated dependencies
+  - @backstage/backend-common@0.19.2
+  - @backstage/backend-plugin-api@0.6.0
+  - @backstage/plugin-auth-node@0.2.17
+  - @backstage/config@1.0.8
+  - @backstage/errors@1.2.1
+
+## 0.2.11-next.2
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/backend-plugin-api@0.6.0-next.2
+  - @backstage/backend-common@0.19.2-next.2
+  - @backstage/plugin-auth-node@0.2.17-next.2
+
+## 0.2.11-next.1
+
+### Patch Changes
+
+- 629cbd194a87: Use `coreServices.rootConfig` instead of `coreService.config`
+- 12a8c94eda8d: Add package repository and homepage metadata
+- Updated dependencies
+  - @backstage/backend-common@0.19.2-next.1
+  - @backstage/plugin-auth-node@0.2.17-next.1
+  - @backstage/backend-plugin-api@0.6.0-next.1
+  - @backstage/config@1.0.8
+  - @backstage/errors@1.2.1
+
+## 0.2.11-next.0
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/backend-common@0.19.2-next.0
+  - @backstage/backend-plugin-api@0.5.5-next.0
+  - @backstage/config@1.0.8
+  - @backstage/errors@1.2.1
+  - @backstage/plugin-auth-node@0.2.17-next.0
+
+## 0.2.10
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/errors@1.2.1
+  - @backstage/backend-common@0.19.1
+  - @backstage/backend-plugin-api@0.5.4
+  - @backstage/config@1.0.8
+  - @backstage/plugin-auth-node@0.2.16
+
 ## 0.2.10-next.0
 
 ### Patch Changes

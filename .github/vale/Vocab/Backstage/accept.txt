@@ -25,6 +25,7 @@ backend's
 backported
 backporting
 BEPs
+bigint
 Bigtable
 Billett
 bitbucket
@@ -123,8 +124,11 @@ FireHydrant
 Firekube
 Firestore
 Fiverr
+Flightcontrol
+flightcontrol
 Francesco
 Frontside
+Gaurav
 gerrit
 Gerrit
 gitbeaker
@@ -164,6 +168,7 @@ inlined
 inlinehilite
 integrator's
 interop
+iterable
 JaCoCo
 JavaScript
 jenkins
@@ -176,6 +181,7 @@ jsx
 JWTs
 Kaewkasi
 Kaswell
+keepalive
 Keyv
 Knex
 Koyeb
@@ -201,6 +207,7 @@ mailto
 maintainer's
 maintainership
 makefile
+Matomo
 md
 memcache
 memoize
@@ -213,6 +220,7 @@ middleware
 minikube
 Minikube
 Minio
+misattributed
 misconfiguration
 misconfigured
 mkdocs
@@ -251,22 +259,26 @@ onboarding
 Onboarding
 OpenSearch
 OpenShift
+openssl
 orgs
 padding
 paddings
 pagerduty
 pageview
+Pandey
 parallelization
 parseable
 Patrik
 pattison
 Peloton
+PEP
 performant
 Performant
 periskop
 Periskop
 permissioned
 permissioning
+pipx
 plantuml
 Platformize
 Podman
@@ -281,6 +293,7 @@ Preprarer
 productional
 Protobuf
 proxying
+proxied
 Proxying
 pseudonymized
 pubsub
@@ -392,6 +405,7 @@ tooltip
 tooltips
 touchpoint
 transpilation
+transpile
 transpiled
 transpiler
 transpilers
@@ -402,7 +416,9 @@ Uffizzi
 ui
 unbreak
 Unconference
+unicode
 unmanaged
+unmount
 unregister
 unregistering
 unregistration
@@ -417,6 +433,7 @@ Valentina
 validator
 validators
 varchar
+vite
 VMware
 Vodafone
 VPCs
@@ -440,3 +457,7 @@ zoomable
 zsh
 Pulumi
 Lightsail
+PR
+rebasing
+lookbehind
+Entra

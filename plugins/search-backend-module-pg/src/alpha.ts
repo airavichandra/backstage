@@ -24,7 +24,7 @@ import { PgSearchEngine } from './PgSearchEngine';
  * @alpha
  * Search backend module for the Postgres engine.
  */
-export const searchModulePostgresEngine = createBackendModule({
+export default createBackendModule({
   moduleId: 'postgresEngine',
   pluginId: 'search',
   register(env) {
@@ -32,7 +32,7 @@ export const searchModulePostgresEngine = createBackendModule({
       deps: {
         searchEngineRegistry: searchEngineRegistryExtensionPoint,
         database: coreServices.database,
-        config: coreServices.config,
+        config: coreServices.rootConfig,
       },
       async init({ searchEngineRegistry, database, config }) {
         searchEngineRegistry.setSearchEngine(

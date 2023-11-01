@@ -5,11 +5,16 @@
 ```ts
 /// <reference types="node" />
 
-import { ExtensionPoint } from '@backstage/backend-plugin-api';
 import { JsonObject } from '@backstage/types';
+import { JsonValue } from '@backstage/types';
 import { Logger } from 'winston';
+import { Observable } from '@backstage/types';
 import { Schema } from 'jsonschema';
+import { ScmIntegrations } from '@backstage/integration';
+import { SpawnOptionsWithoutStdio } from 'child_process';
+import { TaskSpec } from '@backstage/plugin-scaffolder-common';
 import { TemplateInfo } from '@backstage/plugin-scaffolder-common';
+import { UrlReader } from '@backstage/backend-common';
 import { UserEntity } from '@backstage/catalog-model';
 import { Writable } from 'stream';
 import { z } from 'zod';
@@ -36,6 +41,7 @@ export type ActionContext<
     ref?: string;
   };
   signal?: AbortSignal;
+  each?: JsonObject;
 };
 
 // @public
@@ -67,19 +73,133 @@ export const createTemplateAction: <
   >,
 ) => TemplateAction<TActionInput, TActionOutput>;
 
-// @alpha
-export interface ScaffolderActionsExtensionPoint {
+// @public
+export function executeShellCommand(
+  options: ExecuteShellCommandOptions,
+): Promise<void>;
+
+// @public
+export type ExecuteShellCommandOptions = {
+  command: string;
+  args: string[];
+  options?: SpawnOptionsWithoutStdio;
+  logStream?: Writable;
+};
+
+// @public
+export function fetchContents(options: {
+  reader: UrlReader;
+  integrations: ScmIntegrations;
+  baseUrl?: string;
+  fetchUrl?: string;
+  outputPath: string;
+}): Promise<void>;
+
+// @public
+export function fetchFile(options: {
+  reader: UrlReader;
+  integrations: ScmIntegrations;
+  baseUrl?: string;
+  fetchUrl?: string;
+  outputPath: string;
+}): Promise<void>;
+
+// @public
+export type SerializedTask = {
+  id: string;
+  spec: TaskSpec;
+  status: TaskStatus;
+  createdAt: string;
+  lastHeartbeatAt?: string;
+  createdBy?: string;
+  secrets?: TaskSecrets;
+};
+
+// @public
+export type SerializedTaskEvent = {
+  id: number;
+  taskId: string;
+  body: JsonObject;
+  type: TaskEventType;
+  createdAt: string;
+};
+
+// @public
+export interface TaskBroker {
   // (undocumented)
-  addActions(...actions: TemplateAction<any, any>[]): void;
+  cancel?(taskId: string): Promise<void>;
+  // (undocumented)
+  claim(): Promise<TaskContext>;
+  // (undocumented)
+  dispatch(
+    options: TaskBrokerDispatchOptions,
+  ): Promise<TaskBrokerDispatchResult>;
+  // (undocumented)
+  event$(options: { taskId: string; after: number | undefined }): Observable<{
+    events: SerializedTaskEvent[];
+  }>;
+  // (undocumented)
+  get(taskId: string): Promise<SerializedTask>;
+  // (undocumented)
+  list?(options?: { createdBy?: string }): Promise<{
+    tasks: SerializedTask[];
+  }>;
+  // (undocumented)
+  vacuumTasks(options: { timeoutS: number }): Promise<void>;
 }
 
-// @alpha
-export const scaffolderActionsExtensionPoint: ExtensionPoint<ScaffolderActionsExtensionPoint>;
+// @public
+export type TaskBrokerDispatchOptions = {
+  spec: TaskSpec;
+  secrets?: TaskSecrets;
+  createdBy?: string;
+};
+
+// @public
+export type TaskBrokerDispatchResult = {
+  taskId: string;
+};
+
+// @public
+export type TaskCompletionState = 'failed' | 'completed';
+
+// @public
+export interface TaskContext {
+  // (undocumented)
+  cancelSignal: AbortSignal;
+  // (undocumented)
+  complete(result: TaskCompletionState, metadata?: JsonObject): Promise<void>;
+  // (undocumented)
+  createdBy?: string;
+  // (undocumented)
+  done: boolean;
+  // (undocumented)
+  emitLog(message: string, logMetadata?: JsonObject): Promise<void>;
+  // (undocumented)
+  getWorkspaceName(): Promise<string>;
+  // (undocumented)
+  isDryRun?: boolean;
+  // (undocumented)
+  secrets?: TaskSecrets;
+  // (undocumented)
+  spec: TaskSpec;
+}
+
+// @public
+export type TaskEventType = 'completion' | 'log' | 'cancelled';
 
 // @public
 export type TaskSecrets = Record<string, string> & {
   backstageToken?: string;
 };
+
+// @public
+export type TaskStatus =
+  | 'cancelled'
+  | 'completed'
+  | 'failed'
+  | 'open'
+  | 'processing';
 
 // @public (undocumented)
 export type TemplateAction<
@@ -109,10 +229,7 @@ export type TemplateActionOptions<
 > = {
   id: string;
   description?: string;
-  examples?: {
-    description: string;
-    example: string;
-  }[];
+  examples?: TemplateExample[];
   supportsDryRun?: boolean;
   schema?: {
     input?: TInputSchema;
@@ -120,4 +237,18 @@ export type TemplateActionOptions<
   };
   handler: (ctx: ActionContext<TActionInput, TActionOutput>) => Promise<void>;
 };
+
+// @public (undocumented)
+export type TemplateExample = {
+  description: string;
+  example: string;
+};
+
+// @public (undocumented)
+export type TemplateFilter = (...args: JsonValue[]) => JsonValue | undefined;
+
+// @public (undocumented)
+export type TemplateGlobal =
+  | ((...args: JsonValue[]) => JsonValue | undefined)
+  | JsonValue;
 ```

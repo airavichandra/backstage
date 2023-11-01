@@ -1,5 +1,275 @@
 # @backstage/plugin-adr
 
+## 0.6.9-next.1
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/frontend-plugin-api@0.3.0-next.1
+  - @backstage/plugin-catalog-react@1.9.0-next.1
+  - @backstage/plugin-search-react@1.7.2-next.1
+  - @backstage/integration-react@1.1.21-next.1
+  - @backstage/plugin-adr-common@0.2.17-next.0
+  - @backstage/core-components@0.13.8-next.1
+  - @backstage/catalog-model@1.4.3
+  - @backstage/core-plugin-api@1.8.0-next.0
+  - @backstage/theme@0.4.4-next.0
+  - @backstage/plugin-search-common@1.2.7
+
+## 0.6.9-next.0
+
+### Patch Changes
+
+- 6c2b872153: Add official support for React 18.
+- Updated dependencies
+  - @backstage/core-components@0.13.7-next.0
+  - @backstage/frontend-plugin-api@0.3.0-next.0
+  - @backstage/plugin-catalog-react@1.9.0-next.0
+  - @backstage/integration-react@1.1.21-next.0
+  - @backstage/core-plugin-api@1.8.0-next.0
+  - @backstage/plugin-search-react@1.7.2-next.0
+  - @backstage/theme@0.4.4-next.0
+  - @backstage/catalog-model@1.4.3
+  - @backstage/plugin-adr-common@0.2.16
+  - @backstage/plugin-search-common@1.2.7
+
+## 0.6.8
+
+### Patch Changes
+
+- 499e34656e: Fix icon alignment in `AdrSearchResultListItem`
+- 9a1fce352e: Updated dependency `@testing-library/jest-dom` to `^6.0.0`.
+- f95af4e540: Updated dependency `@testing-library/dom` to `^9.0.0`.
+- 1204e7628e: Create an experimental `AdrSearchResultItemExtension` for declarative integration with Backstage; it can be accessed via the `/alpha` import.
+- Updated dependencies
+  - @backstage/plugin-catalog-react@1.8.5
+  - @backstage/frontend-plugin-api@0.2.0
+  - @backstage/core-plugin-api@1.7.0
+  - @backstage/core-components@0.13.6
+  - @backstage/integration-react@1.1.20
+  - @backstage/catalog-model@1.4.3
+  - @backstage/plugin-search-react@1.7.1
+  - @backstage/theme@0.4.3
+  - @backstage/plugin-adr-common@0.2.16
+  - @backstage/plugin-search-common@1.2.7
+
+## 0.6.8-next.2
+
+### Patch Changes
+
+- 499e34656e: Fix icon alignment in `AdrSearchResultListItem`
+- Updated dependencies
+  - @backstage/frontend-plugin-api@0.2.0-next.2
+  - @backstage/integration-react@1.1.20-next.2
+  - @backstage/core-components@0.13.6-next.2
+  - @backstage/core-plugin-api@1.7.0-next.1
+  - @backstage/catalog-model@1.4.3-next.0
+  - @backstage/plugin-catalog-react@1.8.5-next.2
+  - @backstage/plugin-search-react@1.7.1-next.2
+  - @backstage/theme@0.4.3-next.0
+  - @backstage/plugin-adr-common@0.2.16-next.1
+  - @backstage/plugin-search-common@1.2.7-next.0
+
+## 0.6.8-next.1
+
+### Patch Changes
+
+- 1204e7628e: Create an experimental `AdrSearchResultItemExtension` for declarative integration with Backstage; it can be accessed via the `/alpha` import.
+- Updated dependencies
+  - @backstage/frontend-plugin-api@0.1.1-next.1
+  - @backstage/core-components@0.13.6-next.1
+  - @backstage/plugin-search-react@1.7.1-next.1
+  - @backstage/integration-react@1.1.20-next.1
+  - @backstage/plugin-catalog-react@1.8.5-next.1
+  - @backstage/core-plugin-api@1.7.0-next.0
+  - @backstage/catalog-model@1.4.2
+  - @backstage/theme@0.4.2
+  - @backstage/plugin-adr-common@0.2.16-next.0
+  - @backstage/plugin-search-common@1.2.6
+
+## 0.6.8-next.0
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/plugin-catalog-react@1.8.5-next.0
+  - @backstage/core-plugin-api@1.7.0-next.0
+  - @backstage/core-components@0.13.6-next.0
+  - @backstage/integration-react@1.1.20-next.0
+  - @backstage/plugin-adr-common@0.2.16-next.0
+  - @backstage/plugin-search-react@1.7.1-next.0
+  - @backstage/catalog-model@1.4.2
+  - @backstage/theme@0.4.2
+  - @backstage/plugin-search-common@1.2.6
+
+## 0.6.7
+
+### Patch Changes
+
+- 406b786a2a2c: Mark package as being free of side effects, allowing more optimized Webpack builds.
+- aa844e704a32: support for i18n feature
+- 8cec7664e146: Removed `@types/node` dependency
+- Updated dependencies
+  - @backstage/integration-react@1.1.19
+  - @backstage/plugin-catalog-react@1.8.4
+  - @backstage/core-components@0.13.5
+  - @backstage/catalog-model@1.4.2
+  - @backstage/core-plugin-api@1.6.0
+  - @backstage/plugin-adr-common@0.2.15
+  - @backstage/plugin-search-common@1.2.6
+  - @backstage/plugin-search-react@1.7.0
+  - @backstage/theme@0.4.2
+
+## 0.6.7-next.3
+
+### Patch Changes
+
+- 406b786a2a2c: Mark package as being free of side effects, allowing more optimized Webpack builds.
+- aa844e704a32: support for i18n feature
+- Updated dependencies
+  - @backstage/catalog-model@1.4.2-next.2
+  - @backstage/core-components@0.13.5-next.3
+  - @backstage/core-plugin-api@1.6.0-next.3
+  - @backstage/integration-react@1.1.19-next.3
+  - @backstage/plugin-adr-common@0.2.15-next.3
+  - @backstage/plugin-catalog-react@1.8.4-next.3
+  - @backstage/plugin-search-common@1.2.6-next.2
+  - @backstage/plugin-search-react@1.7.0-next.3
+  - @backstage/theme@0.4.2-next.0
+
+## 0.6.7-next.2
+
+### Patch Changes
+
+- 8cec7664e146: Removed `@types/node` dependency
+- Updated dependencies
+  - @backstage/integration-react@1.1.19-next.2
+  - @backstage/core-components@0.13.5-next.2
+  - @backstage/core-plugin-api@1.6.0-next.2
+  - @backstage/plugin-catalog-react@1.8.4-next.2
+  - @backstage/plugin-search-react@1.7.0-next.2
+  - @backstage/catalog-model@1.4.2-next.1
+  - @backstage/theme@0.4.1
+  - @backstage/plugin-adr-common@0.2.15-next.2
+  - @backstage/plugin-search-common@1.2.6-next.1
+
+## 0.6.7-next.1
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/plugin-catalog-react@1.8.4-next.1
+  - @backstage/core-components@0.13.5-next.1
+  - @backstage/plugin-search-react@1.7.0-next.1
+  - @backstage/integration-react@1.1.19-next.1
+  - @backstage/catalog-model@1.4.2-next.0
+  - @backstage/core-plugin-api@1.6.0-next.1
+  - @backstage/plugin-adr-common@0.2.15-next.1
+  - @backstage/theme@0.4.1
+  - @backstage/plugin-search-common@1.2.6-next.0
+
+## 0.6.6-next.0
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/integration-react@1.1.18-next.0
+  - @backstage/core-plugin-api@1.6.0-next.0
+  - @backstage/core-components@0.13.5-next.0
+  - @backstage/catalog-model@1.4.1
+  - @backstage/theme@0.4.1
+  - @backstage/plugin-adr-common@0.2.14-next.0
+  - @backstage/plugin-catalog-react@1.8.3-next.0
+  - @backstage/plugin-search-common@1.2.5
+  - @backstage/plugin-search-react@1.6.5-next.0
+
+## 0.6.4
+
+### Patch Changes
+
+- 12a8c94eda8d: Add package repository and homepage metadata
+- Updated dependencies
+  - @backstage/integration-react@1.1.16
+  - @backstage/core-components@0.13.4
+  - @backstage/plugin-catalog-react@1.8.1
+  - @backstage/core-plugin-api@1.5.3
+  - @backstage/plugin-search-react@1.6.4
+  - @backstage/catalog-model@1.4.1
+  - @backstage/theme@0.4.1
+  - @backstage/plugin-adr-common@0.2.12
+  - @backstage/plugin-search-common@1.2.5
+
+## 0.6.4-next.2
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/plugin-catalog-react@1.8.1-next.1
+  - @backstage/integration-react@1.1.16-next.1
+
+## 0.6.4-next.1
+
+### Patch Changes
+
+- 12a8c94eda8d: Add package repository and homepage metadata
+- Updated dependencies
+  - @backstage/integration-react@1.1.16-next.1
+  - @backstage/catalog-model@1.4.1
+  - @backstage/core-components@0.13.4-next.0
+  - @backstage/core-plugin-api@1.5.3
+  - @backstage/theme@0.4.1
+  - @backstage/plugin-adr-common@0.2.11
+  - @backstage/plugin-catalog-react@1.8.1-next.0
+  - @backstage/plugin-search-common@1.2.5
+  - @backstage/plugin-search-react@1.6.4-next.0
+
+## 0.6.4-next.0
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/core-components@0.13.4-next.0
+  - @backstage/core-plugin-api@1.5.3
+  - @backstage/plugin-catalog-react@1.8.1-next.0
+  - @backstage/plugin-search-react@1.6.4-next.0
+  - @backstage/catalog-model@1.4.1
+  - @backstage/integration-react@1.1.16-next.0
+  - @backstage/theme@0.4.1
+  - @backstage/plugin-adr-common@0.2.11
+  - @backstage/plugin-search-common@1.2.5
+
+## 0.6.3
+
+### Patch Changes
+
+- 2b4513abb784: fixed error with date parsing.
+- Updated dependencies
+  - @backstage/theme@0.4.1
+  - @backstage/plugin-catalog-react@1.8.0
+  - @backstage/core-components@0.13.3
+  - @backstage/core-plugin-api@1.5.3
+  - @backstage/plugin-adr-common@0.2.11
+  - @backstage/catalog-model@1.4.1
+  - @backstage/integration-react@1.1.15
+  - @backstage/plugin-search-common@1.2.5
+  - @backstage/plugin-search-react@1.6.3
+
+## 0.6.3-next.2
+
+### Patch Changes
+
+- 2b4513abb784: fixed error with date parsing.
+- Updated dependencies
+  - @backstage/plugin-catalog-react@1.8.0-next.2
+  - @backstage/theme@0.4.1-next.1
+  - @backstage/core-plugin-api@1.5.3-next.1
+  - @backstage/core-components@0.13.3-next.2
+  - @backstage/plugin-adr-common@0.2.11-next.1
+  - @backstage/catalog-model@1.4.1-next.0
+  - @backstage/integration-react@1.1.15-next.2
+  - @backstage/plugin-search-common@1.2.5-next.0
+  - @backstage/plugin-search-react@1.6.3-next.2
+
 ## 0.6.3-next.1
 
 ### Patch Changes

@@ -5,7 +5,7 @@ description: Documentation on How Configuring App with plugins
 ---
 
 Backstage plugins customize the app for your needs. There is a
-[plugin marketplace](https://backstage.io/plugins) with plugins for many common
+[plugin directory](https://backstage.io/plugins) with plugins for many common
 infrastructure needs - CI/CD, monitoring, auditing, and more.
 
 ## Adding existing plugins to your app
@@ -84,7 +84,7 @@ For example, if you install the `api-docs` plugin, a matching `SidebarItem`
 could be something like this:
 
 ```tsx title="packages/app/src/components/Root/Root.tsx"
-// Import icon from MUI
+// Import icon from Material UI
 import ExtensionIcon from '@material-ui/icons/Extension';
 
 // ... inside the AppSidebar component
